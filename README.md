@@ -1,6 +1,8 @@
 # Turtlebot
 
-**TODO: Add description**
+**Still in development**
+
+Discord bot which tracks revives and offers commands to display them.
 
 ## Installation
 
