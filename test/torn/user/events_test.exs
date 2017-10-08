@@ -5,7 +5,7 @@ defmodule Torn.User.EventsTest do
   test "parse_revive" do
     msg = ~s'<a href="profiles.php?XID=1946152>sullengenie</a> revived you, you are now out of the hospital.'
     timestamp = ~N[1970-01-01 00:00:00]
-    expected = %{"id" => 1946152, "timestamp" => timestamp}
+    expected = %{"reviver" => 1946152, "timestamp" => timestamp}
     event = %{"event" => msg, "seen" => 0, "timestamp" => timestamp}
     assert {:ok, expected} == parse_revive(event)
 

@@ -14,8 +14,8 @@ defmodule Turtlebot.Revive do
   @doc """
   Stores a revive in the database. The revive's user must already be in the database.
   """
-  def store_revive(revive) do
-    revive.user
+  def store_revive_for(user, revive) do
+    user
     |> Ecto.build_assoc(:revives, Map.from_struct(revive))
     |> Repo.insert
   end
@@ -37,5 +37,14 @@ defmodule Turtlebot.Revive do
              where: ^reviver == r.reviver,
              select: r)
              |> Repo.preload(:user)
+  end
+
+  @doc """
+  Returns the number of revives by a reviver.
+  """
+  def count_revives_by(reviver) do
+    Repo.one(from r in Revive,
+             where: ^reviver == r.reviver,
+             select: count(r.id))
   end
 end

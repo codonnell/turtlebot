@@ -23,7 +23,7 @@ defmodule Torn.User.Events do
   def parse_revive(event) do
     case Regex.named_captures(~r/.*XID=(?<id>\d+).*revived.*/, event["event"]) do
       %{"id" => id} ->
-        {:ok, %{"id" => String.to_integer(id), "timestamp" => event["timestamp"]}}
+        {:ok, %{"reviver" => String.to_integer(id), "timestamp" => event["timestamp"]}}
       _ ->
         {:error, "The event is not a revive"}
     end
