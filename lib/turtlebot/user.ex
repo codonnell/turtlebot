@@ -5,6 +5,7 @@ defmodule Turtlebot.User do
   alias Ecto.Changeset
 
   schema "users" do
+    field :discord_id, :integer
     field :torn_id, :integer
     field :api_key, :string
     has_many :revives, Turtlebot.Revive
