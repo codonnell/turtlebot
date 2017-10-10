@@ -13,7 +13,7 @@ defmodule Turtlebot.Command.HelpTest do
   test "command help contains description and usage",
   %{registry: registry, command_stub: command_stub} do
     {:ok, help} = CommandRegistry.fetch(registry, "help")
-    {:reply, {_channel_id, msg}} = help.handler.(%{contents: "!help #{command_stub.name}",
+    {:reply, {_channel_id, msg}} = help.handler.(%{content: "!help #{command_stub.name}",
       channel_id: 0})
     IO.puts msg
     assert String.contains? msg, command_stub.usage
@@ -22,7 +22,7 @@ defmodule Turtlebot.Command.HelpTest do
 
   test "help lists every command", %{registry: registry} do
     {:ok, help} = CommandRegistry.fetch(registry, "help")
-    {:reply, {_channel_id, msg}} = help.handler.(%{contents: "!help", channel_id: 0})
+    {:reply, {_channel_id, msg}} = help.handler.(%{content: "!help", channel_id: 0})
     assert Enum.all?(CommandRegistry.list_commands(registry), fn(name) -> 
       String.contains?(msg, name) 
     end)
