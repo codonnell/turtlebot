@@ -8,6 +8,7 @@ defmodule Turtlebot.User do
     field :discord_id, :integer
     field :torn_id, :integer
     field :api_key, :string
+    field :last_update, :naive_datetime
     has_many :revives, Turtlebot.Revive
   end
 

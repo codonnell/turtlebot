@@ -6,6 +6,7 @@ defmodule Turtlebot.Revive do
   import Ecto.Query, only: [from: 2]
 
   schema "revives" do
+    field :torn_id, :integer
     field :reviver, :integer
     field :timestamp, :naive_datetime
     belongs_to :user, Turtlebot.User
